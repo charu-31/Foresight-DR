@@ -1,0 +1,33 @@
+﻿# Environment & OS
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+backend/venv/
+backend/.venv/
+venv/
+
+# Heavy Weights (keep folder, ignore binaries)
+model/saved_model/*.pth
+model/saved_model/*.h5
+model/saved_model/*.onnx
+model/saved_model/*.pt
+!model/saved_model/.gitkeep
+
+# Test Datasets
+matlab/test_images/*
+!matlab/test_images/.gitkeep
+
+# MATLAB artifacts
+*.asv
+*.m~
+*.mat
