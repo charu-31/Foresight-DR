@@ -1,0 +1,55 @@
+import sqlite3
+import pandas as pd
+
+connection = sqlite3.connect("dr_project.db")
+cursor = connection.cursor()
+cursor.execute("PRAGMA foreign_keys = ON;")
+
+messidor_df = pd.read_csv("messidor2_clean_split.csv")
+
+skipped_count = 0
+loaded_count = 0
+
+for _, row in messidor_df.iterrows():
+
+    # --- Skip ungradable images entirely, per your decision ---
+    if int(row["adjudicated_gradable"]) == 0:
+        skipped_count += 1
+        continue
+
+    id_code = row["id_code"]
+    diagnosis = int(row["diagnosis"])
+
+    # --- Insert a placeholder patient for this image ---
+    cursor.execute("""
+        INSERT INTO patients (name, age, gender, diabetes_duration_years, location)
+        VALUES (?, NULL, NULL, NULL, NULL);
+    """, (f"MESSIDOR_{id_code}",))
+
+    new_patient_id = cursor.lastrowid
+
+    # --- Insert the fundus image ---
+    # Note: id_code already ends in ".png" for Messidor, unlike APTOS,
+    # so we do NOT add another ".png" here.
+    image_path = f"messidor_all_images/{id_code}"
+
+    cursor.execute("""
+        INSERT INTO fundus_images (patient_id, image_path, eye, date_captured, source_dataset)
+        VALUES (?, ?, NULL, NULL, ?);
+    """, (new_patient_id, image_path, "MESSIDOR"))
+
+    new_image_id = cursor.lastrowid
+
+    # --- Insert the DR result ---
+    cursor.execute("""
+        INSERT INTO dr_results (image_id, severity_grade, confidence_score, is_ground_truth)
+        VALUES (?, ?, NULL, 1);
+    """, (new_image_id, diagnosis))
+
+    loaded_count += 1
+
+connection.commit()
+
+print(f"Done! Loaded {loaded_count} images, skipped {skipped_count} ungradable images.")
+
+connection.close()
