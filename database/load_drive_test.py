@@ -12,7 +12,6 @@ for _, row in test_df.iterrows():
     drive_id = row["id"]
     image_filename = row["image"]
 
-    # --- Insert a placeholder patient ---
     cursor.execute("""
         INSERT INTO patients (name, age, gender, diabetes_duration_years, location)
         VALUES (?, NULL, NULL, NULL, NULL);
@@ -20,9 +19,6 @@ for _, row in test_df.iterrows():
 
     new_patient_id = cursor.lastrowid
 
-    # --- Insert the fundus image ---
-    # NOTE: no vessel_masks row and no dr_results row here --
-    # DRIVE's test set has no ground-truth vessel mask by design.
     image_path = f"drive_all_images/{image_filename}"
 
     cursor.execute("""
