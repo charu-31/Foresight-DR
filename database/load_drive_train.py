@@ -13,7 +13,6 @@ for _, row in train_df.iterrows():
     image_filename = row["image"]
     manual1_filename = row["manual1"]
 
-    # --- Insert a placeholder patient ---
     cursor.execute("""
         INSERT INTO patients (name, age, gender, diabetes_duration_years, location)
         VALUES (?, NULL, NULL, NULL, NULL);
@@ -21,7 +20,6 @@ for _, row in train_df.iterrows():
 
     new_patient_id = cursor.lastrowid
 
-    # --- Insert the fundus image ---
     image_path = f"drive_all_images/{image_filename}"
 
     cursor.execute("""
@@ -31,8 +29,6 @@ for _, row in train_df.iterrows():
 
     new_image_id = cursor.lastrowid
 
-    # --- Insert the vessel mask, linked to this image ---
-    # NOTE: no dr_results row here -- DRIVE has no severity grade at all.
     mask_path = f"drive_manual1_masks/{manual1_filename}"
 
     cursor.execute("""
