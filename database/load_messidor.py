@@ -12,7 +12,6 @@ loaded_count = 0
 
 for _, row in messidor_df.iterrows():
 
-    # --- Skip ungradable images entirely, per your decision ---
     if int(row["adjudicated_gradable"]) == 0:
         skipped_count += 1
         continue
@@ -20,7 +19,6 @@ for _, row in messidor_df.iterrows():
     id_code = row["id_code"]
     diagnosis = int(row["diagnosis"])
 
-    # --- Insert a placeholder patient for this image ---
     cursor.execute("""
         INSERT INTO patients (name, age, gender, diabetes_duration_years, location)
         VALUES (?, NULL, NULL, NULL, NULL);
@@ -28,9 +26,6 @@ for _, row in messidor_df.iterrows():
 
     new_patient_id = cursor.lastrowid
 
-    # --- Insert the fundus image ---
-    # Note: id_code already ends in ".png" for Messidor, unlike APTOS,
-    # so we do NOT add another ".png" here.
     image_path = f"messidor_all_images/{id_code}"
 
     cursor.execute("""
@@ -40,7 +35,6 @@ for _, row in messidor_df.iterrows():
 
     new_image_id = cursor.lastrowid
 
-    # --- Insert the DR result ---
     cursor.execute("""
         INSERT INTO dr_results (image_id, severity_grade, confidence_score, is_ground_truth)
         VALUES (?, ?, NULL, 1);
