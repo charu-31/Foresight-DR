@@ -21,12 +21,6 @@ vessel_masks — one row per vessel segmentation mask, linked to an image
 
 mask_id (PK), image_id (FK), mask_path
 Only DRIVE train images have rows here (DRIVE test has no ground-truth mask)
-Current contents (as of last load)
-Dataset	Images	Has severity grade	Has vessel mask
-APTOS	4,171	Yes	No
-Messidor	1,740	Yes	No
-DRIVE	40	No	Only 20 (train)
-
-Total	5,951	—	—
+Current contents has totally 5,951 images
 
 Severity distribution: Grade 0: 2,815 · Grade 1: 770 · Grade 2: 1,279 · Grade 3: 530 · Grade 4: 517
