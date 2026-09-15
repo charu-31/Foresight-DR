@@ -1,0 +1,32 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Splash() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/select-user");
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <div className="splash">
+      <div className="splash-logo">👁️</div>
+
+      <h1>ForeSight DR</h1>
+
+      <p>AI-Powered Retinal Screening</p>
+
+      <div className="loader"></div>
+
+      <p className="loading-text">
+        Checking network connection...
+      </p>
+    </div>
+  );
+}
+
+export default Splash;
