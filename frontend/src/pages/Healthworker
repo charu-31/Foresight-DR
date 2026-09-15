@@ -1,0 +1,22 @@
+import { Link } from "react-router-dom";
+
+function HealthWorker() {
+  return (
+    <div>
+      <h1>Health Worker Dashboard</h1>
+
+      <h2>Welcome, Health Worker</h2>
+
+      <Link to="/screening">
+        <button>+ New Screening</button>
+      </Link>
+
+      <h2>Recent Screenings</h2>
+
+      <p>Patient P001 - Completed</p>
+      <p>Patient P002 - Review Required</p>
+    </div>
+  );
+}
+
+export default HealthWorker;
