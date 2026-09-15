@@ -1,0 +1,271 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
+function PHCHome() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const workerName = location.state?.workerName || "PHC Worker";
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "40px"
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+        }}
+      >
+        <div>
+          <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+
+          <p style={{ margin: "5px 0 0", opacity: 0.85 }}>
+            AI-Powered Retinal Screening
+          </p>
+        </div>
+
+        <div
+          style={{
+            background: "rgba(255,255,255,0.15)",
+            padding: "10px 16px",
+            borderRadius: "20px",
+            fontSize: "14px"
+          }}
+        >
+          👩‍⚕️ PHC Worker
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "40px 25px"
+        }}
+      >
+        {/* Welcome */}
+        <div style={{ marginBottom: "30px" }}>
+          <h1
+            style={{
+              color: "#0b4f8a",
+              marginBottom: "8px",
+              fontSize: "32px"
+            }}
+          >
+            Hi, {workerName} 👋
+          </h1>
+
+          <p
+            style={{
+              color: "#64748b",
+              fontSize: "16px",
+              margin: 0
+            }}
+          >
+            Welcome to your PHC screening dashboard
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "22px"
+          }}
+        >
+
+          {/* New Screening */}
+          <div
+            style={{
+              background: "white",
+              padding: "28px",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(15, 50, 80, 0.08)",
+              border: "1px solid #e2e8f0"
+            }}
+          >
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "14px",
+                background: "#e8f3ff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "25px",
+                marginBottom: "18px"
+              }}
+            >
+              🩺
+            </div>
+
+            <h2 style={{ color: "#0f172a", marginBottom: "10px" }}>
+              New Screening
+            </h2>
+
+            <p
+              style={{
+                color: "#64748b",
+                lineHeight: "1.6",
+                minHeight: "70px"
+              }}
+            >
+              Register a patient and upload their fundus image
+              for AI-powered screening.
+            </p>
+
+            <button
+              onClick={() => navigate("/screening")}
+              style={{
+                width: "100%",
+                padding: "13px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#0b4f8a",
+                color: "white",
+                fontSize: "15px",
+                fontWeight: "bold",
+                cursor: "pointer"
+              }}
+            >
+              Start New Screening →
+            </button>
+          </div>
+
+          {/* Previous Patients */}
+          <div
+            style={{
+              background: "white",
+              padding: "28px",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(15, 50, 80, 0.08)",
+              border: "1px solid #e2e8f0"
+            }}
+          >
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "14px",
+                background: "#eefbf5",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "25px",
+                marginBottom: "18px"
+              }}
+            >
+              👥
+            </div>
+
+            <h2 style={{ color: "#0f172a", marginBottom: "10px" }}>
+              Previous Patients
+            </h2>
+
+            <p
+              style={{
+                color: "#64748b",
+                lineHeight: "1.6",
+                minHeight: "70px"
+              }}
+            >
+              View previously screened patient records.
+            </p>
+
+            <button
+              onClick={() => navigate("/previous-patients")}
+              style={{
+                width: "100%",
+                padding: "13px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#e8f3ff",
+                color: "#0b4f8a",
+                fontSize: "15px",
+                fontWeight: "bold",
+                cursor: "pointer"
+              }}
+            >
+              View Previous Patients →
+            </button>
+          </div>
+
+          {/* Reports */}
+          <div
+            style={{
+              background: "white",
+              padding: "28px",
+              borderRadius: "18px",
+              boxShadow: "0 8px 25px rgba(15, 50, 80, 0.08)",
+              border: "1px solid #e2e8f0"
+            }}
+          >
+            <div
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "14px",
+                background: "#fff7e6",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "25px",
+                marginBottom: "18px"
+              }}
+            >
+              📊
+            </div>
+
+            <h2 style={{ color: "#0f172a", marginBottom: "10px" }}>
+              Reports
+            </h2>
+
+            <p
+              style={{
+                color: "#64748b",
+                lineHeight: "1.6",
+                minHeight: "70px"
+              }}
+            >
+              View screening reports and AI findings.
+            </p>
+
+            <button
+              onClick={() => navigate("/report")}
+              style={{
+                width: "100%",
+                padding: "13px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#e8f3ff",
+                color: "#0b4f8a",
+                fontSize: "15px",
+                fontWeight: "bold",
+                cursor: "pointer"
+              }}
+            >
+              View Reports →
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default PHCHome;
