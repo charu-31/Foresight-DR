@@ -1,0 +1,25 @@
+import { useNavigate } from "react-router-dom";
+
+function DoctorDashboard() {
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>Doctor Dashboard</h1>
+
+      <h2>Cases Requiring Review</h2>
+
+      <p>Patient P001 - Moderate DR</p>
+      <button onClick={() => navigate("/doctor-case")}>
+        View Case
+      </button>
+
+      <p>Patient P002 - Severe DR</p>
+      <button onClick={() => navigate("/doctor-case")}>
+        View Case
+      </button>
+    </div>
+  );
+}
+
+export default DoctorDashboard;
