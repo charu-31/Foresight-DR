@@ -1,0 +1,137 @@
+import { useNavigate } from "react-router-dom";
+
+function DoctorInfo() {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "50px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+        <p style={{ margin: "5px 0 0", opacity: 0.85 }}>
+          Doctor Referral
+        </p>
+      </div>
+
+      <div
+        style={{
+          maxWidth: "650px",
+          margin: "40px auto",
+          padding: "0 20px",
+        }}
+      >
+        <div
+          style={{
+            background: "white",
+            padding: "35px",
+            borderRadius: "20px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 10px 30px rgba(15,50,80,0.08)",
+          }}
+        >
+          <div
+            style={{
+              width: "75px",
+              height: "75px",
+              borderRadius: "50%",
+              background: "#e8f2fb",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "38px",
+              margin: "0 auto 15px",
+            }}
+          >
+            👨‍⚕️
+          </div>
+
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#0b4f8a",
+              marginBottom: "8px",
+            }}
+          >
+            Doctor Information
+          </h1>
+
+          <p
+            style={{
+              textAlign: "center",
+              color: "#64748b",
+              marginBottom: "30px",
+            }}
+          >
+            Referred doctor details
+          </p>
+
+          <div
+            style={{
+              background: "#f8fafc",
+              padding: "20px",
+              borderRadius: "15px",
+              lineHeight: "1.8",
+            }}
+          >
+            <p>
+              <strong>Doctor Name:</strong> Dr. Arun Kumar
+            </p>
+
+            <p>
+              <strong>Specialization:</strong> Ophthalmologist
+            </p>
+
+            <p>
+              <strong>Hospital / Clinic:</strong> Chennai Eye Care Hospital
+            </p>
+
+            <p>
+              <strong>Location:</strong> Chennai, Tamil Nadu
+            </p>
+
+            <p>
+              <strong>Address:</strong> 25, Anna Nagar Main Road, Chennai
+            </p>
+
+            <p>
+              <strong>Phone Number:</strong> +91 98765 43210
+            </p>
+          </div>
+
+          <button
+            onClick={() => navigate("/phc-home")}
+            style={{
+              width: "100%",
+              marginTop: "25px",
+              padding: "14px",
+              border: "none",
+              borderRadius: "10px",
+              background: "#0b4f8a",
+              color: "white",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            ← Back to PHC Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default DoctorInfo;
