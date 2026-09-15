@@ -1,0 +1,245 @@
+import { useNavigate } from "react-router-dom";
+
+function Report() {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "50px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+
+        <p style={{ margin: "5px 0 0", opacity: 0.85 }}>
+          AI-Powered Retinal Screening
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div
+        style={{
+          maxWidth: "800px",
+          margin: "40px auto",
+          padding: "0 20px",
+        }}
+      >
+        <h1
+          style={{
+            color: "#0b4f8a",
+            marginBottom: "8px",
+          }}
+        >
+          Screening Report
+        </h1>
+
+        <p
+          style={{
+            color: "#64748b",
+            marginBottom: "25px",
+          }}
+        >
+          Detailed AI screening report for the patient.
+        </p>
+
+        {/* Patient Information */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            marginBottom: "20px",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#0f172a",
+              marginTop: 0,
+            }}
+          >
+            Patient Information
+          </h2>
+
+          <p>
+            <strong>Patient ID:</strong> P001
+          </p>
+
+          <p>
+            <strong>Patient Name:</strong> Sample Patient
+          </p>
+        </div>
+
+        {/* AI Result */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            marginBottom: "20px",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#0f172a",
+              marginTop: 0,
+            }}
+          >
+            AI Screening Result
+          </h2>
+
+          <div
+            style={{
+              background: "#fff7ed",
+              padding: "18px",
+              borderRadius: "12px",
+              marginBottom: "15px",
+            }}
+          >
+            <h3
+              style={{
+                color: "#c2410c",
+                margin: 0,
+              }}
+            >
+              Moderate Diabetic Retinopathy
+            </h3>
+          </div>
+
+          <p>
+            <strong>Severity:</strong> Moderate
+          </p>
+
+          <p>
+            <strong>Confidence:</strong> 87%
+          </p>
+        </div>
+
+        {/* Explainable Findings */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            marginBottom: "20px",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#0f172a",
+              marginTop: 0,
+            }}
+          >
+            Explainable Findings
+          </h2>
+
+          <p
+            style={{
+              color: "#475569",
+              lineHeight: "1.6",
+            }}
+          >
+            The AI system identified abnormal regions in the uploaded
+            fundus image that influenced the prediction.
+          </p>
+
+          <ul
+            style={{
+              color: "#475569",
+              lineHeight: "1.8",
+            }}
+          >
+            <li>Retinal abnormalities detected</li>
+            <li>Moderate risk indicated by the AI model</li>
+            <li>Clinical confirmation is recommended</li>
+          </ul>
+        </div>
+
+        {/* Recommended Action */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            marginBottom: "25px",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+          }}
+        >
+          <h2
+            style={{
+              color: "#0f172a",
+              marginTop: 0,
+            }}
+          >
+            Recommended Action
+          </h2>
+
+          <p
+            style={{
+              color: "#64748b",
+              lineHeight: "1.6",
+            }}
+          >
+            The patient should undergo further clinical evaluation
+            and confirmation by a qualified eye-care professional.
+          </p>
+
+          {/* Refer to Doctor */}
+          <button
+            onClick={() => navigate("/doctor-info")}
+            style={{
+              width: "100%",
+              padding: "14px",
+              border: "none",
+              borderRadius: "10px",
+              background: "#0b4f8a",
+              color: "white",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              marginTop: "10px",
+            }}
+          >
+            👨‍⚕️ Refer to Doctor →
+          </button>
+        </div>
+
+        {/* Back */}
+        <button
+          onClick={() => navigate("/phc-home")}
+          style={{
+            display: "block",
+            margin: "20px auto",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            fontSize: "15px",
+            cursor: "pointer",
+          }}
+        >
+          ← Back to PHC Dashboard
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Report;
