@@ -1,0 +1,186 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function PHCLogin() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [employee, setEmployee] = useState("");
+  const [village, setVillage] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    navigate("/phc-home", {
+      state: {
+        workerName: name
+      }
+    });
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #eef6ff, #ffffff)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "30px",
+        fontFamily: "Arial, sans-serif"
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "480px",
+          background: "#ffffff",
+          padding: "40px",
+          borderRadius: "24px",
+          boxShadow: "0 15px 40px rgba(0, 70, 140, 0.12)"
+        }}
+      >
+        <div
+          style={{
+            width: "65px",
+            height: "65px",
+            margin: "0 auto 20px",
+            borderRadius: "18px",
+            background: "#0b4f8a",
+            color: "#ffffff",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "30px"
+          }}
+        >
+          👩‍⚕️
+        </div>
+
+        <h1
+          style={{
+            textAlign: "center",
+            color: "#0b4f8a",
+            marginBottom: "8px"
+          }}
+        >
+          PHC Worker Login
+        </h1>
+
+        <p
+          style={{
+            textAlign: "center",
+            color: "#64748b",
+            marginBottom: "30px"
+          }}
+        >
+          Sign in to access your screening dashboard
+        </p>
+
+        <form onSubmit={handleLogin}>
+
+          <label style={labelStyle}>Worker Name</label>
+
+          <input
+            style={inputStyle}
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
+          <label style={labelStyle}>Employee Number</label>
+
+          <input
+            style={inputStyle}
+            type="text"
+            placeholder="Enter employee number"
+            value={employee}
+            onChange={(e) => setEmployee(e.target.value)}
+            required
+          />
+
+          <label style={labelStyle}>Working Village</label>
+
+          <input
+            style={inputStyle}
+            type="text"
+            placeholder="Enter village"
+            value={village}
+            onChange={(e) => setVillage(e.target.value)}
+            required
+          />
+
+          <label style={labelStyle}>Password</label>
+
+          <input
+            style={inputStyle}
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "15px",
+              marginTop: "15px",
+              border: "none",
+              borderRadius: "12px",
+              background: "#0b4f8a",
+              color: "#ffffff",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer"
+            }}
+          >
+            Sign In →
+          </button>
+
+        </form>
+
+        <button
+          onClick={() => navigate("/")}
+          style={{
+            width: "100%",
+            padding: "13px",
+            marginTop: "15px",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            fontSize: "15px",
+            cursor: "pointer"
+          }}
+        >
+          ← Back to Home
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const labelStyle = {
+  display: "block",
+  marginBottom: "7px",
+  marginTop: "18px",
+  color: "#334155",
+  fontSize: "14px",
+  fontWeight: "bold"
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "13px",
+  boxSizing: "border-box",
+  border: "1px solid #cbd5e1",
+  borderRadius: "10px",
+  fontSize: "15px",
+  outline: "none"
+};
+
+export default PHCLogin;
