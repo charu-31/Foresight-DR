@@ -1,0 +1,54 @@
+import { useNavigate } from "react-router-dom";
+
+function UserSelection() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="page">
+      <div className="welcome">
+        <p className="small-title">WELCOME TO</p>
+
+        <h1>ForeSight DR</h1>
+
+        <p>
+          AI-powered retinal screening and early
+          diabetic retinopathy support.
+        </p>
+
+        <h2>Choose your role</h2>
+
+        <div className="role-container">
+
+          <div
+            className="role-card"
+            onClick={() => navigate("/phc-login")}
+          >
+            <div className="role-icon">👩‍⚕️</div>
+
+            <h3>PHC Worker</h3>
+
+            <p>Public Health Worker</p>
+
+            <button>Continue →</button>
+          </div>
+
+          <div
+            className="role-card"
+            onClick={() => navigate("/doctor-login")}
+          >
+            <div className="role-icon">🩺</div>
+
+            <h3>Doctor</h3>
+
+            <p>Medical Specialist</p>
+
+            <button>Continue →</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default UserSelection;
