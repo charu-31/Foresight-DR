@@ -1,0 +1,362 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Screening() {
+  const navigate = useNavigate();
+
+  const [patientId, setPatientId] = useState("");
+  const [patientName, setPatientName] = useState("");
+  const [image, setImage] = useState(null);
+  const [imageName, setImageName] = useState("");
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      setImage(URL.createObjectURL(file));
+      setImageName(file.name);
+    }
+  };
+
+  const handleAnalyze = () => {
+    navigate("/result");
+  };
+
+  const handleGeneratePDF = () => {
+    if (!image) {
+      alert("Please upload a fundus image first.");
+      return;
+    }
+
+    const pdfWindow = window.open("", "_blank");
+
+    if (!pdfWindow) {
+      alert("Please allow pop-ups in your browser.");
+      return;
+    }
+
+    pdfWindow.document.write(`
+      <html>
+        <head>
+          <title>ForeSight DR - Retinal Image</title>
+        </head>
+
+        <body
+          style="
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+          "
+        >
+          <h1 style="color: #0b4f8a;">ForeSight DR</h1>
+
+          <h2>Retinal Fundus Image</h2>
+
+          <p>
+            <strong>Patient ID:</strong> ${patientId || "P001"}
+          </p>
+
+          <p>
+            <strong>Patient Name:</strong>
+            ${patientName || "Sample Patient"}
+          </p>
+
+          <img
+            src="${image}"
+            style="
+              max-width: 700px;
+              width: 90%;
+              margin-top: 20px;
+            "
+          />
+
+          <p style="margin-top: 25px;">
+            AI-Powered Retinal Screening
+          </p>
+        </body>
+      </html>
+    `);
+
+    pdfWindow.document.close();
+
+    pdfWindow.onload = () => {
+      pdfWindow.print();
+    };
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "50px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+
+        <p style={{ margin: "5px 0 0", opacity: 0.85 }}>
+          AI-Powered Retinal Screening
+        </p>
+      </div>
+
+      {/* Main */}
+      <div
+        style={{
+          maxWidth: "750px",
+          margin: "40px auto",
+          padding: "0 20px",
+        }}
+      >
+        <div style={{ marginBottom: "25px" }}>
+          <h1
+            style={{
+              color: "#0b4f8a",
+              marginBottom: "8px",
+            }}
+          >
+            New Screening
+          </h1>
+
+          <p
+            style={{
+              color: "#64748b",
+              margin: 0,
+            }}
+          >
+            Enter patient details and upload a fundus image for AI analysis.
+          </p>
+        </div>
+
+        {/* Form Card */}
+        <div
+          style={{
+            background: "white",
+            padding: "35px",
+            borderRadius: "20px",
+            boxShadow: "0 10px 30px rgba(15, 50, 80, 0.08)",
+            border: "1px solid #e2e8f0",
+          }}
+        >
+          {/* Patient ID */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Patient ID
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter patient ID"
+            value={patientId}
+            onChange={(e) => setPatientId(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "20px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Patient Name */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Patient Name
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter patient name"
+            value={patientName}
+            onChange={(e) => setPatientName(e.target.value)}
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "20px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Upload */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "8px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Upload Fundus Image
+          </label>
+
+          <div
+            style={{
+              border: "2px dashed #94a3b8",
+              borderRadius: "15px",
+              padding: "30px",
+              textAlign: "center",
+              background: "#f8fafc",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "38px",
+                marginBottom: "10px",
+              }}
+            >
+              🖼️
+            </div>
+
+            <p
+              style={{
+                margin: "5px 0",
+                color: "#334155",
+                fontWeight: "bold",
+              }}
+            >
+              Select a retinal fundus image
+            </p>
+
+            <p
+              style={{
+                color: "#64748b",
+                fontSize: "13px",
+              }}
+            >
+              Supported image formats: JPG, JPEG, PNG
+            </p>
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </div>
+
+          {/* Image Preview */}
+          {image && (
+            <div
+              style={{
+                marginTop: "20px",
+                textAlign: "center",
+              }}
+            >
+              <p
+                style={{
+                  color: "#334155",
+                  fontWeight: "bold",
+                }}
+              >
+                Selected Image
+              </p>
+
+              <img
+                src={image}
+                alt="Fundus preview"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: "300px",
+                  borderRadius: "12px",
+                  border: "1px solid #cbd5e1",
+                }}
+              />
+
+              <p
+                style={{
+                  color: "#64748b",
+                  fontSize: "13px",
+                }}
+              >
+                {imageName}
+              </p>
+            </div>
+          )}
+
+          {/* Generate PDF */}
+          <button
+            type="button"
+            onClick={handleGeneratePDF}
+            style={{
+              width: "100%",
+              marginTop: "20px",
+              padding: "13px",
+              border: "1px solid #0b4f8a",
+              borderRadius: "10px",
+              background: "white",
+              color: "#0b4f8a",
+              fontSize: "15px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            📄 Generate Image to PDF
+          </button>
+
+          {/* Analyze */}
+          <button
+            type="button"
+            onClick={handleAnalyze}
+            style={{
+              width: "100%",
+              marginTop: "15px",
+              padding: "14px",
+              border: "none",
+              borderRadius: "10px",
+              background: "#0b4f8a",
+              color: "white",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            🔍 Analyze Image →
+          </button>
+        </div>
+
+        {/* Back */}
+        <button
+          onClick={() => navigate("/phc-home")}
+          style={{
+            display: "block",
+            margin: "25px auto",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            fontSize: "15px",
+            cursor: "pointer",
+          }}
+        >
+          ← Back to Dashboard
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Screening;
