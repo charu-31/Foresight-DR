@@ -1,0 +1,213 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
+function Doctorhome() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const doctorName = location.state?.doctorName || "Doctor";
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "40px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+        <p style={{ margin: "5px 0 0" }}>
+          Doctor Portal • AI-Powered Retinal Screening
+        </p>
+      </div>
+
+      {/* Main */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "40px auto",
+          padding: "0 20px",
+        }}
+      >
+        <h1 style={{ color: "#0b4f8a" }}>
+          Hi, {doctorName} 👨‍⚕️
+        </h1>
+
+        <p style={{ color: "#64748b" }}>
+          Welcome to your ForeSight DR dashboard.
+        </p>
+
+        {/* Stats */}
+        <div
+          style={{
+            display: "flex",
+            gap: "15px",
+            flexWrap: "wrap",
+            margin: "30px 0",
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "15px",
+              flex: 1,
+              minWidth: "180px",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <p style={{ color: "#64748b" }}>New Records</p>
+            <h2 style={{ color: "#0b4f8a" }}>1</h2>
+          </div>
+
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "15px",
+              flex: 1,
+              minWidth: "180px",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <p style={{ color: "#64748b" }}>Previous Records</p>
+            <h2 style={{ color: "#0b4f8a" }}>2</h2>
+          </div>
+
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "15px",
+              flex: 1,
+              minWidth: "180px",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <p style={{ color: "#64748b" }}>Cases Requiring Review</p>
+            <h2 style={{ color: "#c2410c" }}>1</h2>
+          </div>
+        </div>
+
+        {/* New Records */}
+        <h2 style={{ color: "#0f172a" }}>New Records</h2>
+
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            marginTop: "15px",
+            marginBottom: "35px",
+          }}
+        >
+          <h3 style={{ color: "#0b4f8a" }}>Patient P001</h3>
+
+          <p>
+            <strong>Referred by:</strong> PHC Worker
+          </p>
+
+          <p>
+            <strong>AI Result:</strong> Moderate Diabetic Retinopathy
+          </p>
+
+          <p>
+            <strong>Confidence:</strong> 87%
+          </p>
+
+          <p style={{ color: "#c2410c", fontWeight: "bold" }}>
+            Doctor Review Required
+          </p>
+
+          <button
+            onClick={() => navigate("/doctor-case")}
+            style={{
+              padding: "13px 20px",
+              border: "none",
+              borderRadius: "10px",
+              background: "#0b4f8a",
+              color: "white",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            View Patient Record →
+          </button>
+        </div>
+
+        {/* Previous Records */}
+        <h2 style={{ color: "#0f172a" }}>Previous Records</h2>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            flexWrap: "wrap",
+            marginTop: "15px",
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "15px",
+              flex: 1,
+              minWidth: "250px",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <h3 style={{ color: "#0b4f8a" }}>Patient P002</h3>
+            <p>Severe Diabetic Retinopathy</p>
+            <p style={{ color: "#64748b" }}>
+              Previously handled case
+            </p>
+          </div>
+
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "15px",
+              flex: 1,
+              minWidth: "250px",
+              border: "1px solid #e2e8f0",
+            }}
+          >
+            <h3 style={{ color: "#0b4f8a" }}>Patient P003</h3>
+            <p>Mild Diabetic Retinopathy</p>
+            <p style={{ color: "#64748b" }}>
+              Previously handled case
+            </p>
+          </div>
+        </div>
+
+        {/* Back */}
+        <button
+          onClick={() => navigate("/")}
+          style={{
+            display: "block",
+            margin: "30px auto",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            cursor: "pointer",
+            fontSize: "15px",
+          }}
+        >
+          ← Back
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Doctorhome;
