@@ -1,0 +1,125 @@
+import { useNavigate } from "react-router-dom";
+
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #eef6ff, #ffffff)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: "Arial, sans-serif",
+        padding: "20px",
+      }}
+    >
+      <div
+        style={{
+          background: "#ffffff",
+          width: "100%",
+          maxWidth: "650px",
+          padding: "50px 35px",
+          borderRadius: "24px",
+          textAlign: "center",
+          boxShadow: "0 15px 40px rgba(0, 70, 140, 0.12)",
+        }}
+      >
+        <div
+          style={{
+            width: "75px",
+            height: "75px",
+            margin: "0 auto 20px",
+            borderRadius: "20px",
+            background: "#0b4f8a",
+            color: "#ffffff",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "32px",
+            fontWeight: "bold",
+          }}
+        >
+          F
+        </div>
+
+        <h1
+          style={{
+            margin: "0",
+            color: "#0b4f8a",
+            fontSize: "38px",
+          }}
+        >
+          ForeSight DR
+        </h1>
+
+        <p
+          style={{
+            color: "#64748b",
+            fontSize: "17px",
+            marginTop: "10px",
+            marginBottom: "40px",
+          }}
+        >
+          AI-Powered Retinal Screening
+        </p>
+
+        <h2
+          style={{
+            color: "#1e293b",
+            fontSize: "24px",
+            marginBottom: "25px",
+          }}
+        >
+          Choose Your Role
+        </h2>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "18px",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <button
+            onClick={() => navigate("/phc-login")}
+            style={{
+              background: "#0b4f8a",
+              color: "#ffffff",
+              border: "none",
+              padding: "15px 30px",
+              borderRadius: "12px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              minWidth: "180px",
+            }}
+          >
+            PHC Worker
+          </button>
+
+          <button
+            onClick={() => navigate("/doctor-login")}
+            style={{
+              background: "#ffffff",
+              color: "#0b4f8a",
+              border: "2px solid #0b4f8a",
+              padding: "15px 30px",
+              borderRadius: "12px",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+              minWidth: "180px",
+            }}
+          >
+            Doctor
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Home;
