@@ -1,0 +1,214 @@
+import { useNavigate } from "react-router-dom";
+
+function DoctorCase() {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        paddingBottom: "50px",
+      }}
+    >
+      {/* Header */}
+      <div
+        style={{
+          background: "#0b4f8a",
+          color: "white",
+          padding: "22px 40px",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>ForeSight DR</h2>
+        <p style={{ margin: "5px 0 0", opacity: 0.85 }}>
+          Doctor Portal • Patient Case Review
+        </p>
+      </div>
+
+      {/* Main */}
+      <div
+        style={{
+          maxWidth: "900px",
+          margin: "40px auto",
+          padding: "0 20px",
+        }}
+      >
+        {/* Title */}
+        <div style={{ marginBottom: "25px" }}>
+          <h1 style={{ color: "#0b4f8a", marginBottom: "8px" }}>
+            Patient Case Review
+          </h1>
+
+          <p style={{ color: "#64748b", margin: 0 }}>
+            Review the AI screening result and take appropriate action.
+          </p>
+        </div>
+
+        {/* Patient Information */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+            marginBottom: "20px",
+          }}
+        >
+          <h2 style={{ color: "#0f172a", marginTop: 0 }}>
+            Patient Information
+          </h2>
+
+          <p>
+            <strong>Patient ID:</strong> P001
+          </p>
+
+          <p>
+            <strong>Patient Name:</strong> Sample Patient
+          </p>
+
+          <p>
+            <strong>Referred by:</strong> PHC Worker
+          </p>
+        </div>
+
+        {/* AI Result */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+            marginBottom: "20px",
+          }}
+        >
+          <h2 style={{ color: "#0f172a", marginTop: 0 }}>
+            AI Screening Result
+          </h2>
+
+          <div
+            style={{
+              background: "#fff7ed",
+              padding: "18px",
+              borderRadius: "12px",
+              marginBottom: "15px",
+            }}
+          >
+            <p style={{ margin: 0, color: "#c2410c", fontWeight: "bold" }}>
+              Moderate Diabetic Retinopathy
+            </p>
+          </div>
+
+          <p>
+            <strong>AI Confidence:</strong> 87%
+          </p>
+
+          <p style={{ color: "#64748b" }}>
+            The AI model detected retinal abnormalities that may be
+            associated with diabetic retinopathy.
+          </p>
+        </div>
+
+        {/* Explainable Findings */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+            marginBottom: "20px",
+          }}
+        >
+          <h2 style={{ color: "#0f172a", marginTop: 0 }}>
+            Explainable Findings
+          </h2>
+
+          <p style={{ color: "#475569", lineHeight: "1.6" }}>
+            The AI system identified abnormal regions in the retinal image
+            that influenced the prediction.
+          </p>
+
+          <ul style={{ color: "#475569", lineHeight: "1.8" }}>
+            <li>Possible retinal abnormalities detected</li>
+            <li>AI prediction indicates moderate risk</li>
+            <li>Clinical confirmation is recommended</li>
+          </ul>
+        </div>
+
+        {/* Doctor Review */}
+        <div
+          style={{
+            background: "white",
+            padding: "25px",
+            borderRadius: "18px",
+            border: "1px solid #e2e8f0",
+            boxShadow: "0 8px 20px rgba(15,50,80,0.06)",
+            marginBottom: "25px",
+          }}
+        >
+          <h2 style={{ color: "#0f172a", marginTop: 0 }}>
+            Doctor Review
+          </h2>
+
+          <p style={{ color: "#64748b" }}>
+            Please review the AI result before taking action.
+          </p>
+
+          <div style={{ display: "flex", gap: "15px", flexWrap: "wrap" }}>
+            <button
+              onClick={() => alert("Case approved successfully")}
+              style={{
+                padding: "13px 22px",
+                border: "none",
+                borderRadius: "10px",
+                background: "#0b4f8a",
+                color: "white",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              ✓ Approve Case
+            </button>
+
+            <button
+              onClick={() => alert("Patient referred to specialist")}
+              style={{
+                padding: "13px 22px",
+                border: "1px solid #0b4f8a",
+                borderRadius: "10px",
+                background: "white",
+                color: "#0b4f8a",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+            >
+              Refer to Specialist →
+            </button>
+          </div>
+        </div>
+
+        {/* Back */}
+        <button
+          onClick={() => navigate("/doctor-home")}
+          style={{
+            display: "block",
+            margin: "20px auto 0",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            fontSize: "15px",
+            cursor: "pointer",
+          }}
+        >
+          ← Back to Doctor Dashboard
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default DoctorCase;
