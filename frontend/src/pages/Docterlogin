@@ -1,0 +1,274 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function Doctorlogin() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [specialist, setSpecialist] = useState("");
+  const [hospital, setHospital] = useState("");
+  const [experience, setExperience] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    navigate("/doctor-home", {
+      state: {
+        doctorName: name,
+        specialist: specialist,
+        hospital: hospital,
+        experience: experience,
+      },
+    });
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#f4f8fc",
+        fontFamily: "Arial, sans-serif",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "30px 20px",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "500px",
+          background: "white",
+          padding: "35px",
+          borderRadius: "20px",
+          boxShadow: "0 10px 30px rgba(15, 50, 80, 0.10)",
+          border: "1px solid #e2e8f0",
+        }}
+      >
+        {/* Logo */}
+        <div
+          style={{
+            width: "65px",
+            height: "65px",
+            borderRadius: "50%",
+            background: "#e8f2fb",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "32px",
+            margin: "0 auto 15px",
+          }}
+        >
+          🩺
+        </div>
+
+        {/* Heading */}
+        <h1
+          style={{
+            textAlign: "center",
+            color: "#0b4f8a",
+            marginBottom: "8px",
+          }}
+        >
+          Doctor Login
+        </h1>
+
+        <p
+          style={{
+            textAlign: "center",
+            color: "#64748b",
+            marginBottom: "30px",
+          }}
+        >
+          Access referred patient records
+        </p>
+
+        <form onSubmit={handleLogin}>
+
+          {/* Doctor Name */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "7px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Doctor Name
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter doctor name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "18px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Specialization */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "7px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Specialization
+          </label>
+
+          <input
+            type="text"
+            placeholder="e.g. Ophthalmologist"
+            value={specialist}
+            onChange={(e) => setSpecialist(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "18px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Hospital */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "7px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Hospital / Clinic
+          </label>
+
+          <input
+            type="text"
+            placeholder="Enter hospital or clinic name"
+            value={hospital}
+            onChange={(e) => setHospital(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "18px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Experience */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "7px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Years of Experience
+          </label>
+
+          <input
+            type="number"
+            min="0"
+            placeholder="Enter years of experience"
+            value={experience}
+            onChange={(e) => setExperience(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "18px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Password */}
+          <label
+            style={{
+              display: "block",
+              marginBottom: "7px",
+              color: "#334155",
+              fontWeight: "bold",
+            }}
+          >
+            Password
+          </label>
+
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "13px",
+              marginBottom: "25px",
+              border: "1px solid #cbd5e1",
+              borderRadius: "10px",
+              fontSize: "15px",
+              boxSizing: "border-box",
+            }}
+          />
+
+          {/* Sign In */}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "14px",
+              border: "none",
+              borderRadius: "10px",
+              background: "#0b4f8a",
+              color: "white",
+              fontSize: "16px",
+              fontWeight: "bold",
+              cursor: "pointer",
+            }}
+          >
+            Sign In →
+          </button>
+        </form>
+
+        {/* Back */}
+        <button
+          onClick={() => navigate("/")}
+          style={{
+            display: "block",
+            margin: "22px auto 0",
+            border: "none",
+            background: "transparent",
+            color: "#0b4f8a",
+            fontSize: "15px",
+            cursor: "pointer",
+          }}
+        >
+          ← Back
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default Doctorlogin;
