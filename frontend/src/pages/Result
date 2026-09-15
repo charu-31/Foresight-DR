@@ -1,0 +1,75 @@
+import { useNavigate } from "react-router-dom";
+
+function Result() {
+  const navigate = useNavigate();
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#f4f8fc",
+        padding: "40px",
+        fontFamily: "Arial",
+      }}
+    >
+      <h1 style={{ color: "#0b4f8a" }}>
+        Screening Result
+      </h1>
+
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "25px",
+          borderRadius: "15px",
+          maxWidth: "700px",
+        }}
+      >
+        <h2>Patient P001</h2>
+
+        <h3 style={{ color: "#c2410c" }}>
+          Moderate Diabetic Retinopathy
+        </h3>
+
+        <p>
+          <b>Confidence:</b> 87%
+        </p>
+
+        <p>
+          The AI model detected retinal abnormalities that
+          require further clinical review.
+        </p>
+
+        <button
+          onClick={() => navigate("/doctor-home")}
+          style={{
+            padding: "12px 20px",
+            backgroundColor: "#0b4f8a",
+            color: "white",
+            border: "none",
+            borderRadius: "8px",
+            cursor: "pointer",
+          }}
+        >
+          Send for Doctor Review →
+        </button>
+      </div>
+
+      <button
+        onClick={() => navigate("/screening")}
+        style={{
+          marginTop: "20px",
+          padding: "10px 18px",
+          backgroundColor: "white",
+          color: "#0b4f8a",
+          border: "1px solid #0b4f8a",
+          borderRadius: "8px",
+          cursor: "pointer",
+        }}
+      >
+        ← Back
+      </button>
+    </div>
+  );
+}
+
+export default Result;
